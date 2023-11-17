@@ -1,0 +1,2 @@
+-- AlterTable
+ALTER TABLE "Courses" ALTER COLUMN "updatedDate" SET DEFAULT CURRENT_TIMESTAMP;
