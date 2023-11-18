@@ -131,6 +131,8 @@ adminRouter.post("/login", async (req: Request, res: Response) => {
 
 adminRouter.post("/addAdmin", (req: Request, res: Response) => {
   adminHelper.addAdmin(req.body.username, req.body.password).then(() => {
+    console.log(req);
+    
     res.send("succesfully added");
   });
 });
