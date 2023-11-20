@@ -7,20 +7,12 @@ import { S3Client } from "@aws-sdk/client-s3";
 
 export const adminRouter: any = Router();
 
-interface S3ClientConfig {
-  region: string;
-  credentials: {
-    accessKeyId?: string;
-    secretAccessKey: string;
-  };
-}
 interface MulterRequest extends Request {
   file: any;
   params:any;
 }
-let key = process.env.AWS_ACCESS_KEY
 const s3 = new S3Client({
-  region: process.env.AWS_REGION||"", 
+  region: process.env.AWS_DEFAULT_REGION||"", 
   credentials: {
     accessKeyId: process.env.AWS_ACCESS_KEY || "", 
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY||'',
