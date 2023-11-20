@@ -6,7 +6,7 @@ import { S3Client,ListObjectsV2Command } from "@aws-sdk/client-s3";
 
 const prisma = new PrismaClient();
 const s3 = new S3Client({
-  region: "ap-south-1", 
+  region: process.env.AWS_DEFAULT_REGION||"", 
   credentials: {
     accessKeyId: process.env.AWS_ACCESS_KEY || "", 
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY||'',
@@ -86,7 +86,11 @@ export const adminHelper = {
 
   addCourse:async(values:FormValue)=>{
     return new Promise(async(resolve,rejects)=>{
-   
+      console.log("env");
+      
+      console.log(process.env.AWS_DEFAULT_REGION);
+      console.log(process.env.AWS_ACCESS_KEY);
+      console.log(process.env.AWS_SECRET_ACCESS_KEY);
       console.log("val",values);
       
       
@@ -130,7 +134,7 @@ export const adminHelper = {
 
   getOneCourse:(id:number)=>{
     return new Promise(async(resolve,rejects)=>{
-      console.log(id);
+      console.log(process.env.AWS_DEFAULT_REGION);
       const command =new ListObjectsV2Command({
         Bucket:`lifescool`,
         Prefix: `review-images/${id}/`
