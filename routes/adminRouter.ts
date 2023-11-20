@@ -153,6 +153,8 @@ adminRouter.post("/addTutorImage/:id", async (req: Request, res: Response) => {
   console.log("awstest",req);
   
   tutorImageUpload(req, res, async (error) => {
+    console.log("errrrrrrEEE",error);
+    
   });
 });
 adminRouter.post("/addReviewImage/:id", async (req: Request, res: Response) => {
