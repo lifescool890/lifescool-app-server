@@ -1,12 +1,8 @@
 import { Router, Request, Response } from "express";
 import { adminHelper } from "../helpers/adminHelper";
+
 export const userRouter: any = Router();
 
-
-interface MulterRequest extends Request {
-    file: any;
-    params:any;
-  }
   
 userRouter.post("/getOneCourse", async (req: Request, res: Response) => {
     console.log("bod",req.body);
@@ -15,6 +11,8 @@ userRouter.post("/getOneCourse", async (req: Request, res: Response) => {
     await adminHelper
       .getOneCourse(id)
       .then((response) => {
+        console.log("going to send");
+        
         res
           .status(200)
           .json({ data: response, message: "one course fetched successfully" });

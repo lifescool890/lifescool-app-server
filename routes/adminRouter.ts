@@ -150,12 +150,13 @@ adminRouter.post("/addCourse", (req: Request, res: Response) => {
   
 });
 adminRouter.post("/addTutorImage/:id", async (req: Request, res: Response) => {
+  console.log("awstest",req);
+  
   tutorImageUpload(req, res, async (error) => {
-    let file = req.file;
-
   });
 });
 adminRouter.post("/addReviewImage/:id", async (req: Request, res: Response) => {
+  console.log("awstest",req);
   console.log(req.params);
   console.log(req.files?.keys);
   reviewImageUpload(req, res, async (error) => {
