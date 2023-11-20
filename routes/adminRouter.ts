@@ -12,7 +12,7 @@ interface MulterRequest extends Request {
   params:any;
 }
 const s3 = new S3Client({
-  region: process.env.AWS_DEFAULT_REGION||"", 
+  region: "ap-south-1", 
   credentials: {
     accessKeyId: process.env.AWS_ACCESS_KEY || "", 
     secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY||'',
