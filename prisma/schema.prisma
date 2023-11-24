@@ -34,11 +34,6 @@ model User {
 }
 
 model Trending {
-  id        Int @id @default(autoincrement())
-  trending1 Int
-  trending2 Int
-  trending3 Int
-  trending4 Int
-  trending5 Int
-  trending6 Int
+  id       Int  @id @default(autoincrement())
+  trending Json
 }

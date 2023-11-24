@@ -142,10 +142,7 @@ adminRouter.post("/addCourse", (req: Request, res: Response) => {
   
 });
 adminRouter.post("/addTutorImage/:id", async (req: Request, res: Response) => {
-  console.log("awstest",req);
-  
   tutorImageUpload(req, res, async (error) => {
-    console.log("errrrrrrEEE",error);
     
   });
 });
@@ -219,6 +216,8 @@ adminRouter.post("/deleteCourse", async (req: Request, res: Response) => {
 });
 
 adminRouter.post("/setTrending",(req:Request,res:Response)=>{
+  console.log("tr",req.body);
+  
   adminHelper.addTrending(req.body).then((response)=>{
     res.status(200).json({message:"trending setting done"})
     

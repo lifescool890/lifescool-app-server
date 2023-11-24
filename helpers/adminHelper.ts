@@ -2,6 +2,7 @@ import { PrismaClient } from "@prisma/client";
 import bcrypt from "bcrypt";
 import jwt from 'jsonwebtoken';
 import { S3Client,ListObjectsV2Command } from "@aws-sdk/client-s3";
+import { json } from "body-parser";
 
 
 const prisma = new PrismaClient();
@@ -26,14 +27,9 @@ interface FormValue{
   price:number
   tutorName:string
 }
-interface trendingValues{
-  trending1:number
-  trending2:number
-  trending3:number
-  trending4:number
-  trending5:number
-  trending6:number
-}
+// interface trendingValues{
+//   trending:[]
+// }
 
 export const adminHelper = {
   loginAuthentication: async (userName: string, password: string) => {
@@ -198,7 +194,7 @@ export const adminHelper = {
     })
   },
 
-  addTrending:(values:trendingValues)=>{
+  addTrending:(values:any)=>{
     console.log("val",values);
     
       return new Promise(async(resolve,rejects)=>{
@@ -206,12 +202,7 @@ export const adminHelper = {
           where:{
             id:1
           },data:{
-            trending1:values.trending1,
-            trending2:values.trending2,
-            trending3:values.trending3,
-            trending4:values.trending4,
-            trending5:values.trending5,
-            trending6:values.trending6
+            trending:values
           }
       }).then((response)=>{
         resolve(response)
@@ -226,23 +217,22 @@ export const adminHelper = {
           id:1
         },
         select:{
-          trending1:true,
-          trending2:true,
-          trending3:true,
-          trending4:true,
-          trending5:true,
-          trending6:true
+          trending:true
         }
         
       }).then(async(response)=>{
         console.log(response);
+        const array =Object(response?.trending)
+        console.log(typeof(array));
+        
         if(response){
-          let ids= Object.values(response)
-          console.log(ids);
+         const ids=array?.map((item:any)=>{
+          return(Number(item.value))
+         })
+         console.log(ids);
           await prisma.courses.findMany({
             where:{
               id:{in:ids}
-
             }
           }).then((response)=>{
             console.log(response);
