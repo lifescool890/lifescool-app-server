@@ -31,6 +31,8 @@ interface FormValue{
 //   trending:[]
 // }
 
+type trending =[]
+
 export const adminHelper = {
   loginAuthentication: async (userName: string, password: string) => {
     return new Promise(async (resolve, rejects) => {
@@ -194,7 +196,7 @@ export const adminHelper = {
     })
   },
 
-  addTrending:(values:any)=>{
+  addTrending:(values:trending)=>{
     console.log("val",values);
     
       return new Promise(async(resolve,rejects)=>{
