@@ -25,10 +25,8 @@ interface FormValue {
   updatedDate: Date;
   price: number;
   tutorName: string;
+  location:string;
 }
-// interface trendingValues{
-//   trending:[]
-// }
 
 export const adminHelper = {
   loginAuthentication: async (userName: string, password: string) => {
@@ -86,6 +84,7 @@ export const adminHelper = {
             price: Number(values.price),
             tutorName: values.tutorName,
             tutorDesc: values.tutorDesc,
+            location:values.location
           },
         })
         .then((response) => {
@@ -181,6 +180,19 @@ export const adminHelper = {
           where: {
             id: 1,
           },
+          data: {
+            trending: values,
+          },
+        })
+        .then((response) => {
+          resolve(response);
+        });
+    });
+  },
+  addTrendings: (values: any) => {
+    return new Promise(async (resolve, rejects) => {
+      await prisma.trending
+        .create({
           data: {
             trending: values,
           },

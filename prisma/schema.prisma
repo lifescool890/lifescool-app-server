@@ -17,6 +17,7 @@ model Courses {
   promoLink            String
   upComingStartingDate String
   upComingEndingDate   String
+  location             String
   tutorName            String
   tutorDesc            String
   courseOverView       String
