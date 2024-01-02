@@ -153,7 +153,7 @@ export const adminHelper = {
             coursePoints: values.coursePoints,
             faq: values.faq,
             tutorDesc: values.tutorDesc,
-            price: values.price,
+            price: Number(values.price),
             tutorName: values.tutorName,
           },
         })
