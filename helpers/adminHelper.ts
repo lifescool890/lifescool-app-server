@@ -98,7 +98,11 @@ export const adminHelper = {
 
   getCourses: () => {
     return new Promise(async (resolve, rejects) => {
-      const courses = await prisma.courses.findMany().then((response) => {
+      const courses = await prisma.courses.findMany({
+        orderBy:{
+          id:'asc'
+        }
+      }).then((response) => {
         resolve(response);
       });
     });
