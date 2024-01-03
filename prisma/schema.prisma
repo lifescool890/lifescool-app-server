@@ -26,7 +26,7 @@ model Courses {
   faq                  Json
   createdDate          DateTime  @default(now())
   updatedDate          DateTime? @default(now()) @updatedAt
-  isDesable            Boolean   @default(false)
+  isDisable            Boolean   @default(false)
 }
 
 model User {
