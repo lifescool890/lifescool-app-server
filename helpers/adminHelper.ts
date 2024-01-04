@@ -3,8 +3,6 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { S3Client, ListObjectsV2Command } from "@aws-sdk/client-s3";
 import { json } from "body-parser";
-import { resolve } from "path";
-import { rejects } from "assert";
 
 const prisma = new PrismaClient();
 const s3 = new S3Client({
@@ -257,6 +255,10 @@ export const adminHelper = {
         data: {
           Disable:!boolean
         },
+      }).then((response)=>{
+        resolve(response)
+      }).catch((err)=>{
+        rejects()
       })
     })
   }
