@@ -199,3 +199,15 @@ adminRouter.get("/getTrending", (req: Request, res: Response) => {
       res.status(400).json({ message: "error occured" });
     });
 });
+adminRouter.post("/changeVisibility", (req: Request, res: Response) => {
+  adminHelper
+    .changeVisibility(req.body.id,req.body.text)
+    .then((response) => {
+      res
+        .status(200)
+        .json({ data: response, message: "visibility changed successfully" });
+    })
+    .catch(() => {
+      res.status(400).json({ message: "error occured" });
+    });
+});

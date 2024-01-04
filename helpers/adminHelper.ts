@@ -3,6 +3,8 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import { S3Client, ListObjectsV2Command } from "@aws-sdk/client-s3";
 import { json } from "body-parser";
+import { resolve } from "path";
+import { rejects } from "assert";
 
 const prisma = new PrismaClient();
 const s3 = new S3Client({
@@ -103,6 +105,8 @@ export const adminHelper = {
           id:'asc'
         }
       }).then((response) => {
+        console.log(response);
+        
         resolve(response);
       });
     });
@@ -243,4 +247,17 @@ export const adminHelper = {
         });
     });
   },
+
+  changeVisibility:(id:number,boolean:boolean)=>{
+    return new Promise(async(resolve,rejects)=>{
+      await prisma.courses.update({
+        where: {
+          id: Number(id),
+        },
+        data: {
+          Disable:!boolean
+        },
+      })
+    })
+  }
 };
