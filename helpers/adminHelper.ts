@@ -158,6 +158,7 @@ export const adminHelper = {
             faq: values.faq,
             tutorDesc: values.tutorDesc,
             price: Number(values.price),
+            priceWithOutOffer: Number(values.priceWithOutOffer),
             tutorName: values.tutorName,
           },
         })
