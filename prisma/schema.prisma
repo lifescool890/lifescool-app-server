@@ -21,12 +21,13 @@ model Courses {
   tutorName            String
   tutorDesc            String
   courseOverView       String
+  priceWithOutOffer    Int       @default(0)
   price                Int
   coursePoints         Json
   faq                  Json
   createdDate          DateTime  @default(now())
   updatedDate          DateTime? @default(now()) @updatedAt
-  Disable            Boolean   @default(false)
+  Disable              Boolean   @default(false)
 }
 
 model User {

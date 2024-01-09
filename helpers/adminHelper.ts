@@ -23,6 +23,7 @@ interface FormValue {
   faq: string[];
   tutorDesc: string;
   updatedDate: Date;
+  priceWithOutOffer: number;
   price: number;
   tutorName: string;
   location:string;
@@ -82,6 +83,7 @@ export const adminHelper = {
             coursePoints: values.coursePoints,
             faq: values.faq,
             price: Number(values.price),
+            priceWithOutOffer: Number(values.priceWithOutOffer),
             tutorName: values.tutorName,
             tutorDesc: values.tutorDesc,
             location:values.location
