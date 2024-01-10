@@ -105,8 +105,6 @@ export const adminHelper = {
           id:'asc'
         }
       }).then((response) => {
-        console.log(response);
-        
         resolve(response);
       });
     });
@@ -164,6 +162,9 @@ export const adminHelper = {
         })
         .then((response) => {
           resolve(response);
+        }).catch((error)=>{
+          console.log(error);
+          
         });
     });
   },
